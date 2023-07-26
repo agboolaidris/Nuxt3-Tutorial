@@ -2,17 +2,20 @@
   <div class="text-sm text-gray-800">
     <label>{{ label }}</label>
     <div class="relative h-10">
-      <div
-        class="z-10 relative bg-gray-600 w-max flex justify-start items-center h-full"
-      >
-        <slot name="left-icon"> </slot>
-      </div>
+      <button class="z-10 relative px-2 flex justify-start items-center h-full">
+        <slot name="leftIcon"> </slot>
+      </button>
       <input
         class="w-full inset-0 absolute border-gray-100 rounded focus:border-indigo-600 text-sm"
+        :class="{ 'pl-7': $slots.leftIcon, 'pr-7': $slots.rightIcon }"
         :value="modelValue"
         @input="onInput"
+        :type="type"
+        :placeholder="placeholder"
       />
-      <slot name="right-icon"></slot>
+      <button class="z-10 relative px-2 flex justify-start items-center h-full">
+        <slot name="rightIcon"></slot>
+      </button>
     </div>
   </div>
 </template>
@@ -21,10 +24,13 @@
 export type InputProps = {
   label?: string;
   modelValue: string;
+  type?: string;
+  placeholder?: string;
 };
 
 withDefaults(defineProps<InputProps>(), {
   label: "Password",
+  type: "text",
 });
 
 const emit = defineEmits();

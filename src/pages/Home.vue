@@ -2,7 +2,7 @@
   <div class="h-screen bg-gray-100 flex justify-center items-center">
     <div class="p-8 bg-white w-full max-w-xl rounded space-y-8">
       <Input :label="emailText" v-model="email">
-        <template v-slot:left-icon> <button>Button</button> </template>
+        <template v-slot:leftIcon>kk</template>
       </Input>
     </div>
   </div>
