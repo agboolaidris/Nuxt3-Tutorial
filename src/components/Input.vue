@@ -1,7 +1,7 @@
 <template>
   <div class="text-sm text-gray-800">
     <label>{{ label }}</label>
-    <div class="relative h-10">
+    <div class="relative h-10" :class="class">
       <button class="z-10 relative px-2 flex justify-start items-center h-full">
         <slot name="leftIcon"> </slot>
       </button>
@@ -26,10 +26,10 @@ export type InputProps = {
   modelValue: string;
   type?: string;
   placeholder?: string;
+  class?: string;
 };
 
 withDefaults(defineProps<InputProps>(), {
-  label: "Password",
   type: "text",
 });
 

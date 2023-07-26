@@ -1,18 +1,36 @@
 <template>
-  <div class="h-screen bg-gray-100 flex justify-center items-center">
-    <div class="p-8 bg-white w-full max-w-xl rounded space-y-8">
-      <Input :label="emailText" v-model="email">
-        <template v-slot:leftIcon>kk</template>
-      </Input>
+  <div class="min-h-screen bg-gray-100">
+    <div class="bg-indigo-700">
+      <div
+        class="max-w-7xl h-20 mx-auto px-4 sm:px-6 xl:px-8 flex items-center"
+      >
+        <div class="max-w-xs w-96 ml-auto">
+          <Input v-model="email" placeholder="search for the author"> </Input>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="grid gap-x-6 sm:grid-cols-2 lg:grid-cols-4 max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 mt-20"
+    >
+      <div class="">
+        <PropertyCard @onAddClick="handleClick" />
+      </div>
+      <div class="">
+        <PropertyCard />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import Input from "../components/Input.vue";
+import PropertyCard from "../components/PropertyCard.vue";
 
-const email = ref("kkkk");
+const email = ref("");
 
-const emailText = computed(() => `email length is ${email.value.length}`);
+const handleClick = (value: string) => {
+  alert(value);
+};
 </script>
